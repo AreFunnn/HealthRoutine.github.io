@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Title" content="width=device-width, initial-scale=1.0">
+    <title>Rutinitas Olahraga dan Kesehatan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Rutinitas Olahraga dan Kesehatan</h1>
+        <p>Siap Membantu Melayani Kebutuhan Olahraga dan Kesehatanmu</p>
+    </header>
+    
+    <nav>
+       <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="workout.html"><i class="fas fa-dumbbell"></i> Workouts</a>
+        <a href="nutrisitubuh.html"><i class="fas fa-utensils"></i> Nutrisi Tubuh</a>
+        <a href="gayahidupsehat.html"><i class="fas fa-heartbeat"></i> Gaya Hidup Sehat</a>
+    </nav>
+    
+    <div class="container" id="home">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Ubah Pola Hidup Kamu Sekarang</h2>
+                <a href="workout.html" class="btn">Mulai Sekarang</a>
+            </div>
+        </section>
+        
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #ffffff;">Konten Lainnya</h2>
+        
+        <div class="section-container">
+            <div class="section-box" onclick="toggleContent('workout-plans')">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Panduan Kebugaran</h3>
+            </div>
+            
+            <div class="section-box" onclick="toggleContent('nutrition-guide')">
+                <i class="fas fa-utensils"></i>
+                <h3>Panduan Nutrisi</h3>
+            </div>
+            
+            <div class="section-box" onclick="window.open('https://www.instagram.com/torchgohealthy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==')">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Sosial Media Kesehatan</h3>
+            </div>
+
+             <div class="section-box" onclick="window.open('https://youtube.com/@lifeisabalancing?si=Upjn-Dq3AU_43UIL')">
+                <i class="fas fa-microphone"></i>
+                <h3>Podcast Kesehatan</h3>
+            </div>
+        </div>
+        
+        <div id="workout-plans" class="hidden-content">
+            <h2>Workout Plans</h2>
+            <ul style="margin-left: 2rem; margin-top: 1rem;">
+                <li><strong>Rutinitas Pemula</strong></li>
+            </ul>
+            <button onclick="toggleContent('workout-plans')" class="btn" style="margin-top: 1.5rem;">Close</button>
+        </div>
+        
+        <div id="nutrition-guide" class="hidden-content">
+            <h2>Panduan Nutrisi</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+            </div>
+            <button onclick="toggleContent('nutrition-guide')" class="btn" style="margin-top: 1.5rem;">Close</button>
+        </div>
+        
+        <div id="progress-tracker" class="hidden-content">
+            <h2>Progress Tracker</h2>
+            </ul>
+            <button onclick="toggleContent('progress-tracker')" class="btn" style="margin-top: 1.5rem;">Close</button>
+        </div>
+        
+        <div id="expert-tips" class="hidden-content">
+            <h2>Expert Tips</h2>
+            <button onclick="toggleContent('expert-tips')" class="btn" style="margin-top: 1.5rem;">Close</button>
+        </div>
+        
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>m.arfanata.k@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>(+62-821-2597-9341)</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Jl. Palapa Raya No.1 Pasar Minggu<br>Jakarta Selatan</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 HealthRoutines.</p>
+        <p>All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                // Hide all other content sections first
+                document.querySelectorAll('.hidden-content').forEach(section => {
+                    section.style.display = "none";
+                });
+                content.style.display = "block";
+                content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    </script>
+</body>
+</html>

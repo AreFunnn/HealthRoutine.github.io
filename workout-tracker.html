@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="workout-tracker">
+    <h2 id="workout-title">Workout Program</h2>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+        <span id="progress-text">0% Complete</span>
+    </div>
+    <div class="exercise-list" id="exercise-container">
+        <!-- Exercises load here -->
+    </div>
+    <button class="btn" id="complete-workout">
+        <i class="fas fa-check-circle"></i> Selesaikan Latihan
+    </button>
+</div>
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Safely get workout data
+    const workoutData = localStorage.getItem('workoutData');
+    if (!workoutData) {
+        console.error("No workout data found!");
+        return;
+    }
+
+    // 2. Parse with error handling
+    let exercises;
+    try {
+        exercises = JSON.parse(workoutData);
+    } catch (e) {
+        console.error("Failed to parse workout data:", e);
+        return;
+    }
+
+    // 3. Verify exercises is an array
+    if (!Array.isArray(exercises)) {
+        console.error("Exercises is not an array:", exercises);
+        return;
+    }
+
+    // 4. Safe exercise loading (no forEach)
+    const container = document.getElementById('exercise-container');
+    if (!container) {
+        console.error("Exercise container not found!");
+        return;
+    }
+
+    // Old school loop instead of forEach
+    for (let i = 0; i < exercises.length; i++) {
+        const ex = exercises[i];
+        container.innerHTML += `
+            <div class="exercise">
+                <h3>${ex.name}</h3>
+                <p>${ex.sets} • Rest: ${ex.rest}</p>
+                <input type="checkbox" class="complete-exercise">
+            </div>
+        `;
+    }
+
+    // 5. Add checkbox handlers
+    const checkboxes = document.getElementsByClassName('complete-exercise');
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('change', function() {
+            // Your change handler here
+        });
+    }
+});
+</script>
+</body>
+</html>
