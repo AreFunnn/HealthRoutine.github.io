@@ -8,11 +8,14 @@
         body {
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
             background-image: url("SportsBackground.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+            min-height: 100vh;
         }
 
         body::before {
@@ -116,20 +119,23 @@
         }
         
         .section-container {
-            display: grid;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
         
         .section-box {
-            background:  #2b5876;
+            background: #2b5876;
             border-radius: 8px;
             padding: 2rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             text-align: center;
             cursor: pointer;
+            flex: 1;
         }
         
         .section-box:hover {
@@ -154,6 +160,146 @@
             margin-top: 2rem;
             margin-bottom: 2rem;
             color:#ffffff
+        }
+
+        .podcast-tab {
+        padding: 2rem;
+        color: #ffffff;
+        background: rgba(255,255,255,0.05);
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        }
+
+        .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        margin: 2rem 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        }
+
+        .video-caption {
+        text-align: center;
+        margin-top: 0.5rem;
+        font-style: italic;
+        color: #aaa;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+        .video-container {
+            margin: 1rem 0;
+        }
+        }
+
+
+        .tracker-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #2b5876;
+        border-radius: 8px;
+        color: white;
+        }
+
+        .exercise {
+        background: rgba(255,255,255,0.1);
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        }
+
+        .exercise input {
+        margin-right: 1rem;
+        transform: scale(1.3);
+        }
+
+
+
+        /* Checklist Styles */
+        .workout-checklist {
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+        }
+
+        .exercise {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .exercise input[type="checkbox"] {
+            margin-right: 1rem;
+            transform: scale(1.2);
+        }
+        
+        .tracker-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #2b5876;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .exercise {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .exercise input {
+            margin-right: 1rem;
+            transform: scale(1.3);
+        }
+
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .tracker-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        
+        .exercise {
+            padding: 0.8rem;
+        }
+        }
+
+        .exercise label {
+            cursor: pointer;
+            flex-grow: 1;
         }
 
         .workout-container {
@@ -417,10 +563,11 @@
 
         .nutrient-card {
             background: #2b5876;
+            color: #ffffff;
             padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.5;
         }
 
         .nutrient-card:hover {
@@ -439,10 +586,12 @@
         }
 
         .meal-time {
+            color: #ffffff;
             background: #2b5876;
             border-radius: 8px;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             border-left: 4px solid #4CAF50;
+            margin-bottom: 1rem;
         }
 
         .meal-time h4 {
@@ -470,6 +619,88 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             animation: fadeIn 0.5s ease;
         }
+
+       .healthy-lifestyle-container {
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            color: #ffffff;
+        }
+
+        .healthy-lifestyle-content {
+            background: #2b5876;
+            padding: 2em;
+            border-radius: 6px;
+            text-align: justify;
+
+            h2 {
+                margin-bottom: 1rem;
+                color: #ffffff;
+            }
+
+            p {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+                color: #ffffff;
+                line-height: 1.6;
+            }
+        }
+
+            li {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                color: #ffffff;
+            }
+
+
+
+        /* Desktop Layout */
+        @media (min-width: 768px) {
+        .healthy-lifestyle-container {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        }
+
+        /* Target LAST child instead of first */
+        .healthy-lifestyle-content:last-child {
+            text-align: justify;
+            padding: 2em;
+            grid-column: 1 / -1; /* Span all columns */
+            background: #2b5876;
+        }
+        }
+
+        .healthy-lifestyle-content:nth-child(3) {
+            background: #2b5876;
+            grid-column: 1 / -1; /* Span all columns */
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .nutrient-card:last-child {
+            text-align: center;
+            background: #2b5876;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        /* Content Styling */
+        .section-title {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-content {
+            line-height: 1.6;
+        }
+
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -510,7 +741,7 @@
             color: white;
             text-align: center;
             padding: 2rem 0;
-            margin-top: 3rem;
+            margin-top: auto;
             position: relative;
             bottom: 0;
             max-width: none;

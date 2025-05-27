@@ -8,71 +8,74 @@
 
 </head>
 <body>
-<div class="workout-tracker">
-    <h2 id="workout-title">Workout Program</h2>
-    <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
-        <span id="progress-text">0% Complete</span>
-    </div>
-    <div class="exercise-list" id="exercise-container">
-        <!-- Exercises load here -->
-    </div>
-    <button class="btn" id="complete-workout">
-        <i class="fas fa-check-circle"></i> Selesaikan Latihan
-    </button>
+   <div class="tracker-container" id="tracker">
+  <!-- Content will load dynamically based on URL -->
+  <h2 id="tracker-title"></h2>
+  <div id="exercise-list"></div>
+  <button id="save-btn" class="btn">Simpan Progress</button>
 </div>
-<script src="script.js"></script>
+
+    <a href="workout.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i> Kembali ke Program
+  </a>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Safely get workout data
-    const workoutData = localStorage.getItem('workoutData');
-    if (!workoutData) {
-        console.error("No workout data found!");
-        return;
-    }
+// Get level from URL
+const urlParams = new URLSearchParams(window.location.search);
+const level = urlParams.get('level') || 'beginner';
 
-    // 2. Parse with error handling
-    let exercises;
-    try {
-        exercises = JSON.parse(workoutData);
-    } catch (e) {
-        console.error("Failed to parse workout data:", e);
-        return;
-    }
+// Exercise data
+const programs = {
+ beginner: [
+    "Push-up: 3 sets x 8-10 repetisi",
 
-    // 3. Verify exercises is an array
-    if (!Array.isArray(exercises)) {
-        console.error("Exercises is not an array:", exercises);
-        return;
-    }
+    "Lunges: 3 sets x 10 per kaki",
 
-    // 4. Safe exercise loading (no forEach)
-    const container = document.getElementById('exercise-container');
-    if (!container) {
-        console.error("Exercise container not found!");
-        return;
-    }
+    "Squat: 3 sets x 10-12 repetisi",
 
-    // Old school loop instead of forEach
-    for (let i = 0; i < exercises.length; i++) {
-        const ex = exercises[i];
-        container.innerHTML += `
-            <div class="exercise">
-                <h3>${ex.name}</h3>
-                <p>${ex.sets} • Rest: ${ex.rest}</p>
-                <input type="checkbox" class="complete-exercise">
-            </div>
-        `;
-    }
+    "Sit-up: 3 sets x 10-15 repetisi",
+    
+    "Plank: 30 detik"
+  ],
+  intermediate: [
+    "Dumbbell bench press: 3 sets x 8-10 repetisi",
+    "Dumbbell row: 3 sets x 8-10 repetisi",
+    "Pull-up: 3 sets x 5-8 repetisi",
+    "Dumbbell squat: 3 sets x 10-12 repetisi",
+    "Plank with shoulder tap: 3 sets x 10 per sisi",
+    "Jump squat: 3 sets x 10-12 repetisi"
+  ],
+  advanced: [
+    "Barbell Back Squat: 4 sets x 6-8 repetisi",
+    "Barbell Deadlift: 4 sets x 6-8 repetisi",
+    "Weighted Pull-up: 4 sets x 5-7 repetisi",
+    "Deadlift: 4 sets x 6-8 repetisi",
+    "Overhead Press: 4 sets x 6-8 repetisi",
+    "Pistol squat: 3 sets x 5-8 per kaki",
+    "Burpee: 3 sets x 10-12 repetisi"
+  ]
+};
 
-    // 5. Add checkbox handlers
-    const checkboxes = document.getElementsByClassName('complete-exercise');
-    for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].addEventListener('change', function() {
-            // Your change handler here
-        });
-    }
+// Load exercises
+document.getElementById('tracker-title').textContent = `Latihan ${level}`;
+const list = document.getElementById('exercise-list');
+
+programs[level].forEach((ex, i) => {
+  list.innerHTML += `
+    <div class="exercise">
+      <input type="checkbox" id="ex-${i}">
+      <label for="ex-${i}">${ex}</label>
+    </div>
+  `;
+});
+
+// Save function
+document.getElementById('save-btn').addEventListener('click', () => {
+  const completed = document.querySelectorAll('#exercise-list input:checked').length;
+  alert(`Tersimpan! ${completed}/${programs[level].length} latihan selesai.`);
 });
 </script>
+
+</div>
 </body>
 </html>
