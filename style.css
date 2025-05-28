@@ -274,11 +274,14 @@
 
 
         .back-btn {
-            display: inline-flex;
+            background: #008905;
+            display: inline-block;
             align-items: center;
             gap: 8px;
             color: white;
             margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
             text-decoration: none;
         }
 
@@ -592,6 +595,19 @@
             padding: 1rem 1.5rem;
             border-left: 4px solid #4CAF50;
             margin-bottom: 1rem;
+
+            ul {
+                margin-bottom: 0.5rem;
+                color: #ffffff;
+                padding-left: 1rem;
+            }
+
+            ol {
+                margin-bottom: 0.5rem;
+                color: #ffffff;
+                padding-left: 1rem;
+            }
+
         }
 
         .meal-time h4 {
@@ -647,6 +663,7 @@
                 margin-bottom: 1rem;
                 color: #ffffff;
                 line-height: 1.6;
+                text-align: justify;
             }
         }
 
@@ -654,6 +671,10 @@
                 margin-top: 0.5rem;
                 margin-bottom: 0.5rem;
                 color: #ffffff;
+            }
+
+            ul {
+                text-align: left;
             }
 
 
